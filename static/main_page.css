@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+body {
+    font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+.navbar {
+    background-color: #228B22;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+.hero-section {
+    background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.hero-section p {
+    font-size: 1.5rem;
+}
+.btn-primary {
+    background-color: #32CD32;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
+.btn-primary:hover {
+    background-color: #228B22;
+}
+.features-section {
+    padding: 50px 0;
+    background-color: white;
+}
+.feature-icon {
+    font-size: 3rem;
+    color: #228B22;
+}
+.footer {
+    background-color: #228B22;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}

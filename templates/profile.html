@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .profile-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        .profile-container h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .points {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .qr-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+        }
+        .qr-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Профиль {{ userName }}</h1>
+        <p class="points">Баллы: <strong>{{ points }}</strong></p>
+        <div class="qr-card">
+            <img src="{{ qr_code }}" alt="QR Code">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_register.css') }}">
+    <title>Login</title>
+    
+</head>
+<body>
+    <div class="messages" style="position: absolute; top: 50px;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}" style="color: crimson; font-weight: bolder;">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="container">
+        <div class="login">
+            <div class="container">
+                <form method="POST">
+                    <h1>Log in</h1>
+                    <input type="text" placeholder="Nickname..." name="username" required>
+                    <input type="password" placeholder="Password..." name="password" required>
+                    <button type="submit">Log in</button>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="register">
+            <div class="container">
+                <i class="fas fa-user-plus fa-5x"></i>
+                <h2>Hello, User</h2>
+                <p>Enter your personal details and start working with us.</p>
+                <button id="redirect_register">Register</button>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('redirect_register').addEventListener('click', function(){
+    window.location.href = "{{ url_for('register') }}";
+})
+    </script>
+</body>
+</html>
