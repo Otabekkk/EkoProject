@@ -7,7 +7,6 @@ import secrets
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Database
-import sqlite3
 from models import User, Database
 
 # Qr Code
@@ -42,7 +41,7 @@ def register():
 
         qr_code = generateCode(username, user_id)
         db.updateQrCode(qr_code, user_id)
-        
+
         return redirect(url_for('login'))
     
     return render_template('register.html')
@@ -85,6 +84,7 @@ def index():
     return render_template('main_page.html')
 
 
+# Профиль
 @app.route('/profile/<int:user_id>')
 @login_required
 def profile(user_id):
@@ -92,6 +92,11 @@ def profile(user_id):
     user = db.getUserById(user_id)
 
     return render_template('profile.html', userName = user[1], points = user[4], qr_code=url_for('static', filename = user[3][7:]))
+
+
+@app.route('/types')
+def types():
+    return render_template('types.html')
 
 if __name__ == '__main__':
     app.run(debug = True)

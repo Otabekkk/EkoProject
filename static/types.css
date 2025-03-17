@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+body {
+    font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+  
+  .card {
+    margin: 30px auto;
+    width: 300px;
+    height: 200px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(88, 85, 85, 0.25), -5px -5px 30px 7px rgba(95, 92, 92, 0.22);
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .cards-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+  }
+  .card {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+  }
+  .card img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+  }
+
+  .card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+  }
+
+  
+.info-container {
+    display: none;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.back-btn:hover {
+    background: #388E3C;
+}
+  
+  @media all and (max-width: 500px) {
+    .card-list {
+      flex-direction: column;
+    }
+  }
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #49ef5c;
+    border-radius: 25px 10px 25px 10px;
+}
+
+
+.actions button {
+    margin: 10px;
+    height: 35px;
+    width: 10%;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: #DF73FF;
+    border-radius: 15px;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+
+
+.actions a {
+    margin: 10px;
+    color: rgba(138, 43, 226, 0.8);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.actions a:hover{
+    background-color: #49ef5c;
+    color: white;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+.footer {
+    background-color: #49ef5c;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+}

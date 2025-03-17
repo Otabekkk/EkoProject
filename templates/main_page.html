@@ -10,43 +10,22 @@
 </head>
 <body>
     <!-- Навбар -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Экология и отходы</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/types">Виды отходов</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/test">Тест</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/map">Карта</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/classify">Классификация</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('profile', user_id=current_user.id) }}">Профиль</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('logout') }}">Выйти</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="actions">
+        <a href="{{ url_for('index') }}">Recycling</a>
+        <a href="{{ url_for('types') }}">Виды отходов</a>
+        <a href="#">Карта</a>
+        <a href="#">Классификация</a>
+        <a href="{{ url_for('profile', user_id = current_user.id) }}">Профиль</a>
+        <a href="{{ url_for('logout') }}" style="padding: 1px;" onclick="openLogoutModal()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
+    </div>
+
 
     <!-- Герой-секция -->
     <section class="hero-section">
         <div class="container">
             <h1>Узнайте больше об отходах и их переработке</h1>
             <p>Наш сайт поможет вам разобраться в видах отходов и найти ближайшие пункты приема.</p>
-            <a href="/types" class="btn btn-primary">Начать</a>
+            <a href="{{ url_for('types') }}" class="btn btn-primary">Начать</a>
         </div>
     </section>
 
@@ -60,12 +39,12 @@
                     <p>Узнайте, какие бывают отходы и как их правильно сортировать.</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-icon">🗺️</div>
+                    <div class="feature-icon">🗾</div>
                     <h3>Карта</h3>
                     <p>Найдите ближайшие пункты приема отходов на интерактивной карте.</p>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon">🔎</div>
                     <h3>Классификация</h3>
                     <p>Загрузите фото отходов, и нейросеть определит их тип.</p>
                 </div>

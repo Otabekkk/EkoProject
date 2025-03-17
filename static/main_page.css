@@ -3,15 +3,64 @@ body {
     font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: white;
 }
-.navbar {
-    background-color: #228B22;
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #49ef5c;
+    border-radius: 25px 10px 25px 10px;
 }
-.navbar-brand, .nav-link {
-    color: white !important;
+
+
+.actions button {
+    margin: 10px;
+    height: 35px;
+    width: 10%;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: #DF73FF;
+    border-radius: 15px;
 }
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+
+
+.actions a {
+    margin: 10px;
+    color: rgba(138, 43, 226, 0.8);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.actions a:hover{
+    background-color: #49ef5c;
+    color: white;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
 .hero-section {
     background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
-    color: white;
+    color: rgba(138, 43, 226, 0.8);
     padding: 100px 0;
     text-align: center;
 }
@@ -23,9 +72,10 @@ body {
     font-size: 1.5rem;
 }
 .btn-primary {
-    background-color: #32CD32;
+    background-color: #49ef5c;
     border: none;
     padding: 10px 20px;
+    margin-top: 10px;
     font-size: 1.2rem;
 }
 .btn-primary:hover {
@@ -37,11 +87,11 @@ body {
 }
 .feature-icon {
     font-size: 3rem;
-    color: #228B22;
+    color: #49ef5c;
 }
 .footer {
-    background-color: #228B22;
+    background-color: #49ef5c;
     color: white;
-    padding: 20px 0;
+    padding: 5px 0;
     text-align: center;
 }
