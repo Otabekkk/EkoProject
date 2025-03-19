@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Экология и отходы</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/types.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
-
     <!-- Навигация -->
     <div class="actions">
+        <img src="static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 15px; margin-right: 20px;">
         <a href="{{ url_for('index') }}">Recycling</a>
         <a href="{{ url_for('types') }}">Виды отходов</a>
         <a href="{{ url_for('map') }}">Карта</a>
@@ -23,42 +25,11 @@
         </a>
     </div>
 
-    <!-- Карточки -->
-    <div class="cards-container">
-        <div class="card">
-            <img src="https://www.svgrepo.com/show/214986/recycle-trash.svg" />
-            <a href="#plastic">Пластик</a>
-        </div>
-        <div class="card">
-            <img src="https://www.svgrepo.com/show/214965/recycle.svg" />
-            <a href="#glass">Стекло</a>
-        </div>
-        <div class="card">
-            <img src="https://www.svgrepo.com/show/214941/recycle-trash.svg" />
-            <a href="#metal">Металл</a>
-        </div>
-        <div class="card">
-            <img src="https://www.svgrepo.com/show/214926/recycle.svg" />
-            <a href="#textile">Текстиль</a>
-        </div>
-        <div class="card">
-            <img src="https://www.svgrepo.com/show/214941/recycle-trash.svg" />
-            <a href="#paper">Макулатура</a>
-        </div>
-        <div class="card">
-            <img src="https://www.svgrepo.com/show/214965/recycle.svg" />
-            <a href="#hazardous">Опасные отходы</a>
-        </div>
-    </div>
-
-    <!-- Секция: Пластик -->
-    <div id="plastic" class="content-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-md-6">
-                    <img src="https://www.svgrepo.com/show/469501/plastic-bottle-2.svg" alt="Пластик" class="img-fluid">
-                </div> -->
-                <div class="col-md-6">
+    <!-- Слайдер -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="card">
                     <h2>Пластик</h2>
                     <p>Пластик — это один из самых распространенных видов отходов. Он разлагается сотни лет, поэтому его важно перерабатывать.</p>
                     <h3>Виды пластика, которые можно и нельзя сдать в переработку</h3>
@@ -88,17 +59,10 @@
                     <p>Перед сдачей пластика рекомендуется связаться с пунктом приёма для уточнения условий и актуальных цен. Сдавая пластик на переработку, вы вносите значительный вклад в сохранение окружающей среды и устойчивое развитие города.</p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Секция: Стекло -->
-    <div id="glass" class="content-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-md-6">
-                    <img src="https://www.svgrepo.com/show/512317/bottle-glass-1575.svg" alt="Стекло" class="img-fluid">
-                </div> -->
-                <div class="col-md-6">
+            <!-- Слайд: Стекло -->
+            <div class="swiper-slide">
+                <div class="card">
                     <h2>Стекло</h2>
                     <p>Стекло — это материал, который можно перерабатывать бесконечно. Оно не теряет своих свойств при переработке.</p>
                     <h3>Виды стекла, которые можно сдать в переработку</h3>
@@ -113,17 +77,10 @@
                     <p>Аккуратность: не разбивайте стекло на мелкие осколки.</p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Секция: Металл -->
-    <div id="metal" class="content-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-md-6">
-                    <img src="https://www.svgrepo.com/show/512316/can-1574.svg" alt="Металл" class="img-fluid">
-                </div> -->
-                <div class="col-md-6">
+            <!-- Слайд: Металл -->
+            <div class="swiper-slide">
+                <div class="card">
                     <h2>Металл</h2>
                     <p>Металл — это ценный ресурс, который можно перерабатывать многократно. Его переработка помогает экономить энергию и ресурсы.</p>
                     <h3>Виды металла, которые можно сдать в переработку</h3>
@@ -138,17 +95,9 @@
                     <p>Аккуратность: не смешивайте черные и цветные металлы.</p>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Секция: Текстиль -->
-    <div id="textile" class="content-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-md-6">
-                    <img src="https://www.svgrepo.com/show/512315/clothes-1573.svg" alt="Текстиль" class="img-fluid">
-                </div> -->
-                <div class="col-md-6">
+            
+            <div class="swiper-slide">
+                <div class="card">
                     <h2>Текстиль</h2>
                     <p>Текстиль — это отходы, которые можно перерабатывать или использовать повторно. Переработка текстиля помогает сократить количество отходов.</p>
                     <h3>Виды текстиля, которые можно сдать в переработку</h3>
@@ -163,17 +112,9 @@
                     <p>Аккуратность: не сдавайте сильно изношенные вещи.</p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Секция: Макулатура -->
-    <div id="paper" class="content-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-md-6"> -->
-                    <!-- <img src="https://www.svgrepo.com/show/512314/paper-1572.svg" alt="Макулатура" class="img-fluid"> -->
-                <!-- </div> -->
-                <div class="col-md-6">
+            <div class="swiper-slide">
+                <div class="card">
                     <h2>Макулатура</h2>
                     <p>Макулатура — это бумажные отходы, которые можно перерабатывать. Переработка бумаги помогает сохранить леса.</p>
                     <h3>Виды макулатуры, которые можно сдать в переработку</h3>
@@ -188,17 +129,9 @@
                     <p>Аккуратность: не сдавайте мокрую или грязную бумагу.</p>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Секция: Опасные отходы -->
-    <div id="hazardous" class="content-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- <div class="col-md-6"> -->
-                    <!-- <img src="https://www.svgrepo.com/show/512313/battery-1571.svg" alt="Опасные отходы" class="img-fluid"> -->
-                <!-- </div> -->
-                <div class="col-md-6">
+            <div class="swiper-slide">
+                <div class="card">
                     <h2>Опасные отходы</h2>
                     <p>Опасные отходы — это отходы, которые могут нанести вред окружающей среде и здоровью человека. Их необходимо утилизировать особым образом.</p>
                     <h3>Виды опасных отходов</h3>
@@ -217,18 +150,32 @@
                     <p>3.Химикаты: Не выливайте химикаты в канализацию. Сдавайте их в специализированные центры утилизации.</p>
                     <p>4.Электроника: Сдавайте старую технику в пункты приема или на специализированные акции по сбору электроники.</p>
                     <p>Перед сдачей опасных отходов уточните в пункте приема, какие именно отходы они принимают и как их правильно подготовить.</p>
+                    <a style="color: white; background-color: #015E27; padding: 10px 20px; text-decoration: none; font-weight: bold;" href="https://t.me/eco_mapp_bot">Пройдите тест и получите дополнительные баллы!</a>
+                    <a style="margin-top: 15px; color: white; background-color: #015E27; padding: 10px 20px; text-decoration: none; font-weight: bold;" href="{{ url_for('game') }}">Сыграйте в игру и получите баллы!</a> 
                 </div>
             </div>
         </div>
+        <!-- Добавление навигации (кнопки вперед/назад) -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <!-- Добавление пагинации (точки) -->
+        <div class="swiper-pagination"></div>
     </div>
-    <a style="margin-left: 600px; background-color: aquamarine; border-radius: 2px;" href="https://t.me/eco_mapp_bot">Пройдите тест и получите дополнительные баллы!</a>
-    
 
-    <!-- Футер -->
-    <footer class="footer text-center">
-        <p>&copy; 2025 Экология и отходы. Все права защищены.</p>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>    
 </body>
 </html>

@@ -10,6 +10,7 @@
 <body>
 
     <div class="actions">
+        <img src="/static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 15px; margin-right: 20px;">
         <a href="{{ url_for('index') }}">Recycling</a>
         <a href="{{ url_for('types') }}">Виды отходов</a>
         <a href="{{ url_for('map') }}">Карта</a>
@@ -24,7 +25,6 @@
         <p class="points">Баллы: <strong>{{ points }}</strong></p>
         <div class="qr-card">
             <img src="{{ qr_code }}" alt="QR Code">
-        
     </div>
     
 

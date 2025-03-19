@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Collector Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFF7E4;
+            font-size: small;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #3b9e7a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        canvas {
+            margin-top: 15px;
+            width: 900px;
+            height: 470px;
+            border: 3px solid #3b9e7a;
+            background-color: #e0f7fa;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #startButton {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #3b9e7a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #startButton:hover {
+            background-color: #2b7c5d;
+        }
+
+        #startButton:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #timer, #score {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #2b7c5d;
+            font-weight: bold;
+        }
+
+        #score {
+            font-size: 1.5em;
+            color: #388e3c;
+        }
+
+        #timer {
+            color: #f44336;
+        }
+
+        #score, #timer {
+            text-align: center;
+        }
+
+        .info-panel {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 800px;
+            max-height: 200px;
+            /* margin-bottom: 20px; */
+        }
+
+        .actions {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            background-color: #015E27;
+            
+            /* padding: 5px; */
+            /* border-radius: 25px 10px 25px 10px; */
+        }
+
+
+        .actions button {
+            margin: 10px;
+            height: 35px;
+            width: 10%;
+            cursor: pointer;
+            border: 1px solid white;
+            background-color: #DF73FF;
+            border-radius: 15px;
+        }
+
+
+        .actions button:hover {
+            background-color: #49ef5c;
+            svg {
+                fill: #fff;
+            }
+        }
+
+
+
+        .actions a {
+            margin: 10px;
+            color: white;
+            font-weight: bold;
+            border-radius: 15px;
+            padding: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+
+        .actions a:hover{
+        background-color: #0E8740;
+        }
+
+
+
+        .actions button:hover {
+            background-color: #49ef5c;
+            svg {
+                fill: #fff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="actions">
+        <img src="static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 15px; margin-right: 20px;">
+        <a href="{{ url_for('index') }}">Recycling</a>
+        <a href="{{ url_for('types') }}">Виды отходов</a>
+        <a href="{{ url_for('map') }}">Карта</a>
+        <a href="{{ url_for('classification') }}">Классификация</a>
+        <a href="{{ url_for('profile', user_id = current_user.id) }}">Профиль</a>
+        <a href="{{ url_for('logout') }}" style="padding: 1px;" onclick="openLogoutModal()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
+    </div>
+
+    <h1>Собери мусор и отнеси в бак!</h1>
+    <div class="info-panel">
+        <div id="score">Собрано мусора: 0</div>
+        <div id="timer">Время: 15</div>
+    </div>
+    <button id="startButton">Старт</button>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 800;
+        canvas.height = 600;
+
+        const images = {
+            player: new Image(),
+            trash: new Image(),
+            bin: new Image(),
+            obstacle: new Image(),
+            background: new Image()
+        };
+
+
+        images.player.src = "/static/images/game/player.png";   
+        images.trash.src = "/static/images/game/trash.png";  
+        images.bin.src = "/static/images/game/bin.png";         
+        images.obstacle.src = "/static/images/game/tree_2.png"; 
+        images.background.src = "/static/images/game/background.png"; 
+
+        let player = { x: 90, y: 50, width: 22, height: 90, speed: 4.1, carrying: false };
+        let trash = { x: 400, y: 400, width: 50, height: 50, collected: false };
+        let bin = { x: 700, y: 250, width: 28, height: 50 };
+
+        let obstacles = [
+            { x: 200, y: 400, width: 70, height: 130 },
+            { x: 350, y: 190, width: 70, height: 130 },
+            { x: 500, y: 60, width: 70, height: 130 },
+            { x: 600, y: 350, width: 70, height: 130 },
+            { x: 150, y: 90, width: 70, height: 130 }
+        ];
+
+        let keys = {};
+        let gameStarted = false;
+        let timeLeft = 15;
+        let score = 0;
+
+        window.addEventListener('keydown', (e) => keys[e.key] = true);
+        window.addEventListener('keyup', (e) => delete keys[e.key]);
+
+        const startButton = document.getElementById('startButton');
+        startButton.addEventListener('click', startGame);
+
+        function checkIfPlayedToday() {
+            const lastPlayedDate = localStorage.getItem('lastPlayedDate');
+            const today = new Date().toLocaleDateString(); 
+            return lastPlayedDate === today;
+        }
+
+        function updateStartButton() {
+            startButton.disabled = false;
+            startButton.innerText = 'Старт';
+            if (checkIfPlayedToday()) {
+                startButton.disabled = true;
+                startButton.innerText = "Игра уже запущена сегодня";
+            } else {
+                startButton.disabled = false;
+                startButton.innerText = "Старт";
+            }
+        }
+
+        function startGame() {
+            if (!gameStarted && !checkIfPlayedToday()) {
+            // if (!gameStarted) {
+                gameStarted = true;
+                timeLeft = 15;
+                score = 0;
+                document.getElementById('score').innerText = 'Собрано мусора: 0';
+                document.getElementById('timer').innerText = 'Время: 15';
+                gameLoop();
+                startTimer();
+
+                const today = new Date().toLocaleDateString();
+                localStorage.setItem('lastPlayedDate', today);
+                updateStartButton(); 
+            }
+        }
+
+        function startTimer() {
+            const timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').innerText = `Время: ${timeLeft}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    gameStarted = false;
+                    fetch('http://localhost:5001/scan/{{current_user.id}}')
+                    alert(`Игра окончена! Собрано мусора: ${score}\nОчки начислены вам в профиль!`);
+                }
+            }, 1000);
+        }
+
+        function update() {
+            if (!gameStarted) return;
+
+            let nextX = player.x;
+            let nextY = player.y;
+
+            if (keys['ArrowRight']) nextX += player.speed;
+            if (keys['ArrowLeft']) nextX -= player.speed;
+            if (keys['ArrowUp']) nextY -= player.speed;
+            if (keys['ArrowDown']) nextY += player.speed;
+
+            if (nextX >= 0 && nextX + player.width <= canvas.width) player.x = nextX;
+            if (nextY >= 0 && nextY + player.height <= canvas.height) player.y = nextY;
+
+            for (let obs of obstacles) {
+                if (checkCollision(player, obs)) {
+                    player.x -= (keys['ArrowRight'] ? player.speed : 0) - (keys['ArrowLeft'] ? player.speed : 0);
+                    player.y -= (keys['ArrowDown'] ? player.speed : 0) - (keys['ArrowUp'] ? player.speed : 0);
+                }
+            }
+
+            if (!trash.collected && checkCollision(player, trash)) {
+                trash.collected = true;
+                player.carrying = true;
+            }
+
+            if (player.carrying && checkCollision(player, bin)) {
+                trash.collected = false;
+                player.carrying = false;
+                placeTrash();
+                score++;
+                document.getElementById('score').innerText = `Собрано мусора: ${score}`;
+            }
+        }
+
+        function draw() {
+            ctx.drawImage(images.background, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(images.player, player.x, player.y, player.width, player.height);
+            if (!trash.collected) {
+                ctx.drawImage(images.trash, trash.x, trash.y, trash.width, trash.height);
+            }
+            ctx.drawImage(images.bin, bin.x, bin.y, bin.width, bin.height);
+            obstacles.forEach(obs => {
+                ctx.drawImage(images.obstacle, obs.x, obs.y, obs.width, obs.height);
+            });
+        }
+
+        function checkCollision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.width &&
+                   obj1.x + obj1.width > obj2.x &&
+                   obj1.y < obj2.y + obj2.height &&
+                   obj1.y + obj1.height > obj2.y;
+        }
+
+        function placeTrash() {
+        let traches = ["/static/images/game/trash.png", "/static/images/game/bottle.png", "/static/images/game/cardboard.png", "/static/images/game/уточка.png"]
+        let num = Math.floor(Math.random() * 4) + 1
+        if(num == 4){
+            images.trash.src = traches[3]
+        }
+        else if(num == 3){
+            images.trash.src = traches[2]
+        }
+        else if(num == 2){
+            images.trash.src = traches[1]
+        }
+        else {
+            images.trash.src = traches[0]
+        }
+
+            trash.x = Math.random() * (canvas.width - trash.width);
+            trash.y = Math.random() * (canvas.height - trash.height);
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            if (gameStarted) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        let loadedImages = 0;
+        Object.values(images).forEach(img => {
+            img.onload = () => {
+                loadedImages++;
+                if (loadedImages === Object.keys(images).length) {
+                    gameLoop();
+                }
+            };
+        });
+
+        updateStartButton();
+    </script>
+</body>
+</html>

@@ -1,16 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
 body {
-    font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FFF7E4;
+    font-size: small;
 }
 
 .actions {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
-    background-color: #49ef5c;
-    border-radius: 25px 10px 25px 10px;
+    /* margin-top: 5px; */
+    background-color: #015E27;
+    padding: 5px;
+    /* border-radius: 25px 10px 25px 10px; */
 }
 
 
@@ -32,11 +34,9 @@ body {
     }
 }
 
-
-
 .actions a {
     margin: 10px;
-    color: rgba(138, 43, 226, 0.8);
+    color: white;
     font-weight: bold;
     border-radius: 15px;
     padding: 8px;
@@ -46,8 +46,7 @@ body {
 
 
 .actions a:hover{
-    background-color: #49ef5c;
-    color: white;
+    background-color: #0E8740;
 }
 
 
@@ -59,38 +58,53 @@ body {
 }
 
 .hero-section {
-    background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
-    color: rgba(138, 43, 226, 0.8);
+    background-image: url('/static/images/background2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #015E27;
     padding: 100px 0;
     text-align: center;
 }
+
+
 .hero-section h1 {
     font-size: 3.5rem;
     font-weight: bold;
 }
+
+
 .hero-section p {
     font-size: 1.5rem;
 }
+
 .btn-primary {
-    background-color: #49ef5c;
+    background: linear-gradient(45deg, #9CCF50, #015E27);
     border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
+    margin-top: 60px;
     font-size: 1.2rem;
+    width: 140px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 1.9rem;
+
 }
+
 .btn-primary:hover {
-    background-color: #228B22;
+    transform: scale(1.05);
 }
+
 .features-section {
     padding: 50px 0;
-    background-color: white;
+    background-color: #FFF7E4;
 }
+
 .feature-icon {
     font-size: 3rem;
     color: #49ef5c;
 }
+
 .footer {
-    background-color: #49ef5c;
+    background-color: #015E27;
     color: white;
     padding: 5px 0;
     text-align: center;

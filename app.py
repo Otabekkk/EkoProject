@@ -155,10 +155,15 @@ def scan(user_id: int):
     db.setPoints(user[0], currentPoints)
     return 'Успех'
 
-
+# Карта
 @app.route('/map')
 def map():    
     return render_template('map.html')
+
+
+@app.route('/game')
+def game():
+    return render_template('game.html')
 
 # @app.route('/recycling_points')
 # def get_recycling_points():
