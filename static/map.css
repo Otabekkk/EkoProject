@@ -1,0 +1,143 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+body {
+    font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #49ef5c;
+    border-radius: 25px 10px 25px 10px;
+}
+
+
+.actions button {
+    margin: 10px;
+    height: 35px;
+    width: 10%;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: #DF73FF;
+    border-radius: 15px;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+
+
+.actions a {
+    margin: 10px;
+    color: rgba(138, 43, 226, 0.8);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.actions a:hover{
+    background-color: #49ef5c;
+    color: white;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+.map_info {
+    display: flex;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+body {
+    font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #49ef5c;
+    border-radius: 25px 10px 25px 10px;
+}
+
+.actions button {
+    margin: 10px;
+    height: 35px;
+    width: 10%;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: #DF73FF;
+    border-radius: 15px;
+}
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+.actions a {
+    margin: 10px;
+    color: rgba(138, 43, 226, 0.8);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.actions a:hover {
+    background-color: #49ef5c;
+    color: white;
+}
+
+.map_info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
+}
+
+.info {
+    flex: 1;
+    margin-right: 30px; 
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 70vh; 
+}
+
+#map {
+    flex: 2;
+    height: 400px;
+    background-color: #e1e1e1;
+    border-radius: 10px;
+}

@@ -34,7 +34,7 @@ class Database:
     
     def updateQrCode(self, qrCode: str, user_id: int):
         with self.connection:
-            self.cursor.execute('UPDATE `Users` SET `qrCode` = ? WHERE `id` = ?', (qrCode, user_id))
+            self.cursor.execute('UPDATE `Users` SET `qrCode` = ? WHERE `id` = ?', (qrCode, user_id,))
         
     def getUser(self, userName: int):
         with self.connection:
@@ -43,3 +43,18 @@ class Database:
     def getUserById(self, user_id: int):
         with self.connection:
             return self.cursor.execute("SELECT * FROM `Users` WHERE id = ?", (user_id,)).fetchone()
+
+    def getPoints(self, user_id):
+        with self.connection:
+            return self.cursor.execute('SELECT `points` FROM `Users` WHERE id = ?', (user_id,)).fetchone()[0]
+        
+    def setPoints(self, user_id, points):
+        with self.connection:
+            return self.cursor.execute('UPDATE `Users` SET `points` = ? WHERE id = ?', (points, user_id,))
+        
+    def getUsersRank(self):
+        with self.connection:
+            self.cursor.execute("SELECT * FROM `Users` ORDER BY points DESC")
+            users_data = self.cursor.fetchall()
+            users = [User(user_data[0], user_data[1], user_data[2], user_data[3], user_data[4]) for user_data in users_data]
+            return users

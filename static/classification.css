@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+body {
+    font-family: 'Sofia Sans Condensed', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+
+.classification-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.classification-container h1 {
+    color: #49ef5c;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.upload-section {
+    margin-top: 20px;
+}
+
+.btn-upload {
+    background-color: #49ef5c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-upload:hover {
+    background-color: #388E3C;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #49ef5c;
+    border-radius: 25px 10px 25px 10px;
+}
+
+
+.actions button {
+    margin: 10px;
+    height: 35px;
+    width: 10%;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: #DF73FF;
+    border-radius: 15px;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}
+
+
+
+.actions a {
+    margin: 10px;
+    color: rgba(138, 43, 226, 0.8);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.actions a:hover{
+    background-color: #49ef5c;
+    color: white;
+}
+
+
+.actions button:hover {
+    background-color: #49ef5c;
+    svg {
+        fill: #fff;
+    }
+}

@@ -1,0 +1,144 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='map.css') }}">
+    <style>
+        #map { height: 500px; width: 100%; }
+    </style>
+</head>
+<body>
+        <div class="actions">
+            <a href="{{ url_for('index') }}">Recycling</a>
+            <a href="{{ url_for('types') }}">Виды отходов</a>
+            <a href="{{ url_for('map') }}">Карта</a>
+            <a href="{{ url_for('classification') }}">Классификация</a>
+            <a href="{{ url_for('profile', user_id = current_user.id) }}">Профиль</a>
+            <a href="{{ url_for('logout') }}" style="padding: 1px;" onclick="openLogoutModal()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
+        </div>
+
+        <h1>Карта пунктов приёма отходов в Бишкеке</h1>
+        <div id="map"></div>
+    
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            
+            var map = L.map('map').setView([42.8746, 74.5698], 13);
+    
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+    
+
+            fetch('/recycling_points')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(point => {
+                        L.marker([point.lat, point.lon])
+                            .addTo(map)
+                            .bindPopup(`<b>${point.name}</b>`);
+                    });
+                })
+                .catch(error => console.error('Ошибка загрузки данных:', error));
+        </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта пунктов приёма отходов</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='map.css') }}">
+    <style>
+        #map { height: 500px; width: 60%px; margin-left: 50px;}
+    </style>
+</head>
+<body>
+    <div class="actions">
+        <a href="{{ url_for('index') }}">Recycling</a>
+        <a href="{{ url_for('types') }}">Виды отходов</a>
+        <a href="{{ url_for('map') }}">Карта</a>
+        <a href="{{ url_for('classification') }}">Классификация</a>
+        <a href="{{ url_for('profile', user_id = current_user.id) }}">Профиль</a>
+        <a href="{{ url_for('logout') }}" style="padding: 1px;" onclick="openLogoutModal()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></a>
+    </div>
+    <h1>Пункты приема в Бишкеке</h1>
+    <div class="map_info">
+        <div class="info">
+            <h4>Центр переработки</h4>
+            <p>Центр, занимающийся переработкой отходов, обеспечивающий прием пластика, бумаги, стекла и других перерабатываемых материалов.</p>
+            <p><strong>Контакты:</strong> +996 555 123 456, center@example.com</p>
+    
+            <h4>Экооператор</h4>
+            <p>Компания, специализирующаяся на утилизации и переработке отходов. Работает с различными типами мусора, включая бытовые и промышленные отходы.</p>
+            <p><strong>Контакты:</strong> +996 777 234 567, ecooperator@example.com</p>
+    
+            <h4>Утипром Технолоджис</h4>
+            <p>Компания, которая предлагает услуги по сбору и переработке отходов, с акцентом на экологически чистые технологии.</p>
+            <p><strong>Контакты:</strong> +996 555 654 321, utiprom@example.com</p>
+    
+            <h4>Алтын Ажыдар</h4>
+            <p>Компания по переработке и утилизации отходов, предоставляющая услуги частным и юридическим лицам.</p>
+            <p><strong>Контакты:</strong> +996 777 345 678, altyn@example.com</p>
+    
+            <h4>Эко комплекс</h4>
+            <p>Многофункциональный комплекс, который включает в себя переработку различных видов отходов, а также экологические образовательные программы.</p>
+            <p><strong>Контакты:</strong> +996 555 987 654, ekocomplex@example.com</p>
+    
+            <h4>Местный центр переработки отходов №1</h4>
+            <p>Местный центр по переработке отходов, предоставляющий услуги по сбору и переработке пластиковых и металлических изделий.</p>
+            <p><strong>Контакты:</strong> +996 555 678 432, localcenter1@example.com</p>
+    
+            <h4>Экоцентр Бишкека</h4>
+            <p>Центр, ориентированный на устойчивое развитие и переработку отходов в Бишкеке, работающий с бытовыми и промышленными отходами.</p>
+            <p><strong>Контакты:</strong> +996 777 567 890, ecocenter.bishkek@example.com</p>
+    
+            <h4>Бишкекский экологический центр</h4>
+            <p>Экологический центр, работающий над повышением осведомленности о переработке отходов и организации программ утилизации.</p>
+            <p><strong>Контакты:</strong> +996 555 543 210, biskekecocenter@example.com</p>
+    
+            <h4>Приемная станция утилизации</h4>
+            <p>Станция, где можно сдать различные виды отходов для последующей переработки и утилизации.</p>
+            <p><strong>Контакты:</strong> +996 777 876 543, recyclingstation@example.com</p>
+    
+            <h4>Экомаркет</h4>
+            <p>Сеть магазинов, которые занимаются сбором и переработкой отходов, а также продажей экологически чистых товаров.</p>
+            <p><strong>Контакты:</strong> +996 555 432 765, ecomarket@example.com</p>
+        </div>
+        
+        <a class="dg-widget-link" href="http://2gis.kg/bishkek/profiles/70000001094316066,70000001075076656,70000001080896964,70000001094316065,70000001058715181,70000001066779318,70000001041327661,70000001060732606,70000001078762872,70000001068930249,70000001063755016,70000001061533199,70000001076110355,70000001028823432,70000001032589180,70000001044207278,70000001049130796,70000001075604180,70000001079592118,70000001049131941,70000001052635210,70000001087517256,70000001077342471/center/74.572552,42.90297659835395/zoom/9?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Бишкека</a><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":700,"height":500,"borderColor":"#a3a3a3","pos":{"lat":42.90297659835395,"lon":74.572552,"zoom":9},"opt":{"city":"bishkek"},"org":[{"id":"70000001094316066"},{"id":"70000001075076656"},{"id":"70000001080896964"},{"id":"70000001094316065"},{"id":"70000001058715181"},{"id":"70000001066779318"},{"id":"70000001041327661"},{"id":"70000001060732606"},{"id":"70000001078762872"},{"id":"70000001068930249"},{"id":"70000001063755016"},{"id":"70000001061533199"},{"id":"70000001076110355"},{"id":"70000001028823432"},{"id":"70000001032589180"},{"id":"70000001044207278"},{"id":"70000001049130796"},{"id":"70000001075604180"},{"id":"70000001079592118"},{"id":"70000001049131941"},{"id":"70000001052635210"},{"id":"70000001087517256"},{"id":"70000001077342471"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;"></noscript>
+        
+    </div>
+    
+    
+
+    <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Инициализация карты
+        var map = L.map('map').setView([42.8746, 74.5698], 13);  // Координаты центра Бишкека
+
+        // Подключение слоя OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Получаем данные из API
+        fetch('/recycling_points')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(point => {
+                    L.marker([point.lat, point.lon])
+                        .addTo(map)
+                        .bindPopup(`<b>${point.name}</b>`);
+                });
+            })
+            .catch(error => console.error('Ошибка загрузки данных:', error));
+    </script> -->
+</body>
+</html>

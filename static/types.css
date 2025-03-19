@@ -4,6 +4,22 @@ body {
     background-color: white;
 }
   
+.card a {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #4CAF50;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card a:hover {
+    background-color: #49ef5c;
+    color: white;
+}
+
   .card {
     margin: 30px auto;
     width: 300px;
@@ -54,38 +70,7 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-.back-btn {
-    margin-top: 20px;
-    padding: 10px 15px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.back-btn:hover {
-    background: #388E3C;
-}
   
-  @media all and (max-width: 500px) {
-    .card-list {
-      flex-direction: column;
-    }
-  }
-
 .actions {
     display: flex;
     justify-content: center;
@@ -140,9 +125,85 @@ body {
     }
 }
 
+
+
+.content-section {
+    display: flex;
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.content-section h3 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.content-section h4 {
+    font-size: 1.4rem;
+    color: #34495e;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* .content-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
+
+
+.container {
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    padding: 0 20px;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.col-md-6 {
+    display: flex;
+    margin-left: 25%;
+    flex-direction: column;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 15px;
+}
+
+
+
 .footer {
     background-color: #49ef5c;
     color: white;
-    padding: 5px 0;
+    padding: 20px 0;
     text-align: center;
+    font-size: 1rem;
+}
+
+.footer p {
+    margin: 0;
 }

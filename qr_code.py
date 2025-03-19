@@ -8,7 +8,7 @@ def generateCode(userName: str, user_id: int):
         border = 4,
     )
 
-    qr.add_data(f'userName: {userName}')
+    qr.add_data(f'http://localhost:5001/scan/{user_id}')
     qr.make(fit = True)
     img = qr.make_image(fill = 'black', back_color = 'white')
     qr_code_path = f"static/qr_codes/{user_id}.png"
