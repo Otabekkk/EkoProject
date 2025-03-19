@@ -109,13 +109,17 @@ body {
 }
 
 
-/* Стили для кнопок навигации */
+
 .swiper-button-next, .swiper-button-prev {
-    color: #49ef5c;
+    color: #015E27;
 }
 
 
-/* Стили для пагинации */
+
 .swiper-pagination-bullet {
-    background-color: #49ef5c;
+    background-color: #015E27;
+}
+
+.card h2, h4 {
+    color: #015E27;
 }

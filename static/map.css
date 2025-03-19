@@ -3,10 +3,15 @@ body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FFF7E4;
     font-size: small;
+    overflow-y: hidden;
+}
+* {
+    box-sizing: border-box;
 }
 
 .actions {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     /* margin-top: 5px; */

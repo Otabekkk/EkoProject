@@ -87,7 +87,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 5px;
+            /* margin-top: 5px; */
             background-color: #015E27;
             
             /* padding: 5px; */
@@ -142,7 +142,7 @@
 </head>
 <body>
     <div class="actions">
-        <img src="static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 15px; margin-right: 20px;">
+        <img src="static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 17px; margin-right: 20px;">
         <a href="{{ url_for('index') }}">Recycling</a>
         <a href="{{ url_for('types') }}">Виды отходов</a>
         <a href="{{ url_for('map') }}">Карта</a>
@@ -245,7 +245,7 @@
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     gameStarted = false;
-                    fetch('http://localhost:5001/scan/{{current_user.id}}')
+                    fetch('http://localhost:5001/scan/{{ current_user.id }}')
                     alert(`Игра окончена! Собрано мусора: ${score}\nОчки начислены вам в профиль!`);
                 }
             }, 1000);

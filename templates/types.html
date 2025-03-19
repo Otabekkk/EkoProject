@@ -12,7 +12,7 @@
 <body>
     <!-- Навигация -->
     <div class="actions">
-        <img src="static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 15px; margin-right: 20px;">
+        <img src="static/images/trashbish_logo.png" alt="logo" style="width: 120px; height: 17px; margin-right: 20px;">
         <a href="{{ url_for('index') }}">Recycling</a>
         <a href="{{ url_for('types') }}">Виды отходов</a>
         <a href="{{ url_for('map') }}">Карта</a>
@@ -150,16 +150,16 @@
                     <p>3.Химикаты: Не выливайте химикаты в канализацию. Сдавайте их в специализированные центры утилизации.</p>
                     <p>4.Электроника: Сдавайте старую технику в пункты приема или на специализированные акции по сбору электроники.</p>
                     <p>Перед сдачей опасных отходов уточните в пункте приема, какие именно отходы они принимают и как их правильно подготовить.</p>
-                    <a style="color: white; background-color: #015E27; padding: 10px 20px; text-decoration: none; font-weight: bold;" href="https://t.me/eco_mapp_bot">Пройдите тест и получите дополнительные баллы!</a>
-                    <a style="margin-top: 15px; color: white; background-color: #015E27; padding: 10px 20px; text-decoration: none; font-weight: bold;" href="{{ url_for('game') }}">Сыграйте в игру и получите баллы!</a> 
+                    <a style="color: white; background-color: #015E27; padding: 15px 20px; text-decoration: none; font-weight: bold; font-size: 25px;" href="https://t.me/eco_mapp_bot">Пройдите тест и получите дополнительные баллы!</a>
+                    <a style="margin-top: 15px; color: white; background-color: #015E27; padding: 15px 20px; text-decoration: none; font-weight: bold; font-size: 25px;" href="{{ url_for('game') }}">Сыграйте в игру и получите баллы!</a> 
                 </div>
             </div>
         </div>
-        <!-- Добавление навигации (кнопки вперед/назад) -->
+      
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
 
-        <!-- Добавление пагинации (точки) -->
+       
         <div class="swiper-pagination"></div>
     </div>
 
